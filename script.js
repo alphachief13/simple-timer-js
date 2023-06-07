@@ -7,16 +7,22 @@ let pausado = false;
 let velStr = "Normal (1x)";
 let velocidadeTempo = 1000;
 let vezesNoLow = 0;
-document.getElementById("speed").innerText = "Speed: " + velStr;
+textoH2(velStr);
+
+function resetInterval(){
+    clearInterval(interval);
+    interval = setInterval(add, velocidadeTempo);
+}
+
+function textoH1(hrs,min,sec){
+    document.getElementById("time").innerText = addZero(hrs)+":"+addZero(min)+":"+addZero(sec)
+}
+function textoH2(value){
+    document.getElementById("speed").innerText = "Speed: " + value;
+}
 
 function verificaPause(){
-    if(pausado === true){
-        document.getElementById("start-button").textContent="Continue";
-    
-    } else{
-        document.getElementById("start-button").textContent="Start";
-    
-    }
+    pausado === true ? document.getElementById("start-button").textContent="Continue" : document.getElementById("start-button").textContent="Start";
 }
 
 function addZero(num){
@@ -34,11 +40,9 @@ function clock(){
     if(ligado === false){
         ligado = true;
         pausado = false;
-        interval = setInterval(add, velocidadeTempo);
+        resetInterval();
     }
-
     verificaPause()
-
 }
 
 function add(){
@@ -51,7 +55,7 @@ function add(){
         hrs++;
         min = 0;
     }
-    document.getElementById("time").innerText = addZero(hrs)+":"+addZero(min)+":"+addZero(sec);
+    textoH1(hrs,min,sec);
 }
 
 function start(){
@@ -64,7 +68,6 @@ function pause(){
         ligado = false;
         pausado = true;
     }
-
     verificaPause()
 }
 
@@ -75,7 +78,7 @@ function stop(){
     sec = 0;
     min = 0;
     hrs = 0;
-    document.getElementById("time").innerText = addZero(hrs)+":"+addZero(min)+":"+addZero(sec);
+    textoH1(hrs,min,sec);
     verificaPause()
 }
 
@@ -95,12 +98,8 @@ function incVel(){
             velStr = "Extreme (1000x)"
             break;
         }
-    if(ligado === true){
-        clearInterval(interval);
-        interval = setInterval(add, velocidadeTempo);
-    }
-    document.getElementById("speed").innerText = "Speed: " + velStr;
-
+        ligado === true ? resetInterval() : null;
+        textoH2(velStr);
 }
 
 function decVel(){
@@ -121,19 +120,11 @@ function decVel(){
     if(ligado === true){
         if(velocidadeTempo === 1000){
             if(vezesNoLow === 0){
-                clearInterval(interval);
-                interval = setInterval(add, velocidadeTempo);
+                resetInterval();
                 vezesNoLow++;
             }
         }
-        
-        if(velocidadeTempo != 1000){
-            clearInterval(interval);
-            interval = setInterval(add, velocidadeTempo);
-        }
-        
+        velocidadeTempo != 1000 ? resetInterval() : null;
     }
-
-    document.getElementById("speed").innerText = "Speed: " + velStr;
-
+    textoH2(velStr);
 }
