@@ -6,6 +6,7 @@ let ligado = false;
 let pausado = false;
 let velStr = "Normal (1x)";
 let velocidadeTempo = 1000;
+let vezesNoLow = 0;
 document.getElementById("speed").innerText = "Speed: " + velStr;
 
 function verificaPause(){
@@ -79,6 +80,7 @@ function stop(){
 }
 
 function incVel(){
+    vezesNoLow = 0;
     switch(velocidadeTempo){
         case 1000:
             velocidadeTempo = 100;
@@ -116,10 +118,22 @@ function decVel(){
             velStr = "Normal (1x)"
             break;
         }
-    if(ligado === true && velocidadeTempo != 1000){
-        clearInterval(interval);
-        interval = setInterval(add, velocidadeTempo);
+    if(ligado === true){
+        if(velocidadeTempo === 1000){
+            if(vezesNoLow === 0){
+                clearInterval(interval);
+                interval = setInterval(add, velocidadeTempo);
+                vezesNoLow++;
+            }
+        }
+        
+        if(velocidadeTempo != 1000){
+            clearInterval(interval);
+            interval = setInterval(add, velocidadeTempo);
+        }
+        
     }
+
     document.getElementById("speed").innerText = "Speed: " + velStr;
 
 }
