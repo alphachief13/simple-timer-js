@@ -116,7 +116,7 @@ function decVel(){
             velStr = "Normal (1x)"
             break;
         }
-    if(ligado === true){
+    if(ligado === true && velocidadeTempo != 1000){
         clearInterval(interval);
         interval = setInterval(add, velocidadeTempo);
     }
