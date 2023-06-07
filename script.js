@@ -15,7 +15,7 @@ function resetInterval(){
 }
 
 function textoH1(hrs,min,sec){
-    document.getElementById("time").innerText = addZero(hrs)+":"+addZero(min)+":"+addZero(sec)
+    document.getElementById("time").innerText = addZero(hrs)+":"+addZero(min)+":"+addZero(sec);
 }
 function textoH2(value){
     document.getElementById("speed").innerText = "Speed: " + value;
@@ -42,7 +42,7 @@ function clock(){
         pausado = false;
         resetInterval();
     }
-    verificaPause()
+    verificaPause();
 }
 
 function add(){
@@ -59,7 +59,7 @@ function add(){
 }
 
 function start(){
-    clock()
+    clock();
 }
 
 function pause(){
@@ -68,7 +68,7 @@ function pause(){
         ligado = false;
         pausado = true;
     }
-    verificaPause()
+    verificaPause();
 }
 
 function stop(){
@@ -79,7 +79,7 @@ function stop(){
     min = 0;
     hrs = 0;
     textoH1(hrs,min,sec);
-    verificaPause()
+    verificaPause();
 }
 
 function incVel(){
@@ -87,15 +87,15 @@ function incVel(){
     switch(velocidadeTempo){
         case 1000:
             velocidadeTempo = 100;
-            velStr = "Fast (10x)"
+            velStr = "Fast (10x)";
             break;
         case 100:
             velocidadeTempo = 10;
-            velStr = "Very fast (100x)"
+            velStr = "Very fast (100x)";
             break;
         case 10:
             velocidadeTempo = 1;
-            velStr = "Extreme (1000x)"
+            velStr = "Extreme (1000x)";
             break;
         }
         ligado === true ? resetInterval() : null;
@@ -106,15 +106,15 @@ function decVel(){
     switch(velocidadeTempo){
         case 1:
             velocidadeTempo = 10;
-            velStr = "Very Fast (100x)"
+            velStr = "Very Fast (100x)";
             break;
         case 10:
             velocidadeTempo = 100;
-            velStr = "Fast (10x)"
+            velStr = "Fast (10x)";
             break;
         case 100:
             velocidadeTempo = 1000;
-            velStr = "Normal (1x)"
+            velStr = "Normal (1x)";
             break;
         }
     if(ligado === true){
