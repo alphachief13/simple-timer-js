@@ -1,0 +1,53 @@
+body{
+    background-color: black;
+}
+div{
+    text-align: center;
+}
+
+h1{
+    color: white;
+    font-size: 50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2{
+    font-size: 30px;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+button{
+    border: none;
+    font-size: 20px;
+    width: 6em;
+    height: 3em;
+    color: white;
+    margin: 2px;
+}
+
+button:hover{
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.start-btn{
+    background-color: rgb(0, 169, 70);
+}
+
+.pause-btn{
+    background-color: rgb(97, 92, 92);
+}
+
+.stop-btn{
+    background-color: rgb(166, 7, 7);
+}
+
+.inc-vel{
+    background-color: blue;
+}
+
+.dec-vel{
+    background-color: orange;
+}
